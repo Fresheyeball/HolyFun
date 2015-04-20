@@ -6,8 +6,7 @@ import Test.QuickCheck
 
 f, g :: [Int] -> [Int] -> [Int] -> [Int] -> [Int]
 f a b c d = a <> b <> c <> d
-g = (<>) .* (<>) .* (<>)
-
+g = (<>) .: (<>) .: (<>)
 
 glukkon :: IO ()
 glukkon = quickCheck
