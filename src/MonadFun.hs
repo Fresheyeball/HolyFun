@@ -59,6 +59,13 @@ b = do
 c :: [String] -> [String]
 c = ((<>) .* (<>)) <$> murf <*> marf <*> blurf
 
+concatM3 :: (Monad m, Monoid m') => m m' -> m m' -> m m' -> m m'
+concatM3 m1 m2 m3 = do
+    m   <- m1
+    m'  <- m2
+    m'' <- m3
+    return $ m <> m' <> m''
+
 glukkon :: IO ()
 glukkon = do
     print $ k 10 -- 13
