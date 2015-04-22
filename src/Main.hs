@@ -1,8 +1,6 @@
 module Main where
 
-import CompositionFun
-
-
+import TransformerFun
 
 main :: IO ()
 main = glukkon
