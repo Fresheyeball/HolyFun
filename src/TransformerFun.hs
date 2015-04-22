@@ -16,6 +16,7 @@ h x y = (+ x) <$> (Just y)
 fobots = return 3 :: IO Integer
 
 -- hmmm, how to use lift?
+-- why is liftM generalized but lift is not?
 --i :: Integer -> Integer -> MaybeT IO Integer
 --i x y = return $ (x +) <$> fobots
 
