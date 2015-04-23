@@ -4,10 +4,18 @@ import Data.Composition
 import Data.Monoid
 import Test.QuickCheck
 
-f, g :: [Int] -> [Int] -> [Int] -> [Int] -> [Int]
+comp2 :: (c -> d) -> (a -> b -> c) -> a -> b -> d
+comp2 = (.:)
+
+f, g, h :: [Int] -> [Int] -> [Int] -> [Int] -> [Int]
 
 f a b c d = a <> b <> c <> d
 g = (<>) .: (<>) .: (<>)
+
+-- lisp style syntax
+h = (comp2
+        (comp2 mappend mappend)
+             mappend)
 
 glukkon :: IO ()
 glukkon = quickCheck
