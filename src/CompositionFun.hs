@@ -1,10 +1,13 @@
 module CompositionFun where
 
 import Data.Composition
+import Data.Functor.Compose
 import Data.Monoid
 import Test.QuickCheck
 
-comp2 :: (c -> d) -> (a -> b -> c) -> a -> b -> d
+comp2 ::           (c -> d)
+      -> (a -> b -> c)
+      ->  a -> b ->      d
 comp2 = (.:)
 
 f, g, h :: [Int] -> [Int] -> [Int] -> [Int] -> [Int]
