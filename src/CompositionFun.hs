@@ -1,7 +1,6 @@
 module CompositionFun where
 
 import Data.Composition
-import Data.Functor.Compose
 import Data.Monoid
 import Test.QuickCheck
 
