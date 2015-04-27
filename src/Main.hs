@@ -1,6 +1,6 @@
 module Main where
 
-import TransformerFun
+import MonadPlusFun
 
 main :: IO ()
 main = glukkon
