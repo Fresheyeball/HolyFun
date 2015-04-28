@@ -26,3 +26,11 @@ ifyM :: Monad m
     ->  (a -> m b)  -- else
     -> m a -> m b
 ifyM = (=<<) .** ify
+
+ifyM' :: Monad m
+    => (a -> Bool)
+    -> (a -> b)
+    -> (a -> b)
+    -> m a -> m b
+-- ifyM' = ((flip flip (return .) . ((.) .)) . (. (return .))) . ifyM
+ifyM' c t e = ifyM c (return . t) (return . e)
