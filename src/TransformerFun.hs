@@ -1,11 +1,11 @@
 module TransformerFun where
 
-import Data.Composition
 import Control.Applicative
 import Control.Monad
-import Control.Monad.Trans
+import Control.Monad.Error
 import Control.Monad.Trans.Maybe
 import Test.QuickCheck
+import If
 
 g :: MaybeT [] Int
 g = MaybeT [Just 3, Nothing, Just 3]
@@ -55,28 +55,6 @@ l = (=<<) $ \x' -> if x' < 5 then return $ x' + 3 else mzero
 z = (>>= (\x' -> if x' < 5 then return $ x' + 3 else mzero))
 
 zz = ifyM (< 5) (return . (+ 3)) (const mzero)
-
-
--- interact with a condition with (->)
--- all functions passed with recieve the conidtion
-ify :: (a -> Bool) -- if
-    -> (a -> b)    -- then
-    -> (a -> b)    -- else
-    -> a -> b
-ify comparision then' else' x =
-    if comparision x
-    then then' x
-    else else' x
-
--- Monadic version of ify.
--- `if` is performed on the contents of the monad
--- the codomain of then and else must be instances of the monad
-ifyM :: Monad m
-    =>  (a -> Bool) -- if
-    ->  (a -> m b)  -- then
-    ->  (a -> m b)  -- else
-    -> m a -> m b
-ifyM = (=<<) .** ify
 
 -- lift is really just, take this monad and make it match the transformed version
 -- so long as its the underlying monad. In this case an `IO Int` is being used inside
