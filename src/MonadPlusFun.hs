@@ -1,3 +1,4 @@
+{-# LANGUAGE ScopedTypeVariables #-}
 module MonadPlusFun where
 
 import Control.Monad
@@ -18,9 +19,20 @@ k, s :: Maybe Int
 k = Just 3 `mplus` Just 6
 s = Nothing `mplus` Just 3
 
+-- For Maybe <> and mplus are different.
+-- Maybe a -- works with mplus
+-- Monoid a => Maybe a -- works with <>
+-- <> requires the Monoid constraint
+
+-- Nothing `mplus` Just 3 = Just 3
+-- Just 6  `mplus` Just 3 = Just 6
+
+-- Nothing      <> Just (Sum 3) = Just (Sum 3)
+-- Just (Sum 6) <> Just (Sum 3) = Just (Sum 9)
+
 -- Either is not a Monoid?
---q :: Either String Int
---q = Left "foo" `mplus` Right 3
+-- q :: Either String Int
+-- q = Left "foo" `mplus` Right 3
 
 glukkon :: IO ()
 glukkon = do
