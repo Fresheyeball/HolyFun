@@ -20,7 +20,7 @@ k = h <$> j <*> j
 i :: Integer -> Integer
 i = j >>= \h' -> return $ h' - 20
 
--- lisp style syntax
+-- lisp style syntax'
 q :: Integer -> Integer
 q = ((>>=) j
         (\h' ->
