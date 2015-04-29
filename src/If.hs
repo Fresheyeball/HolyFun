@@ -4,8 +4,9 @@ import Data.Composition
 import Control.Applicative
 import Control.Monad
 
-if' :: Bool -> t -> t -> t
-if' c t e = if c then t else e
+if' :: Bool -> a -> a -> a
+if' True then' _     = then'
+if' _    _     else' = else'
 
 -- interact with a condition with (->)
 -- all functions passed with recieve the conidtion
