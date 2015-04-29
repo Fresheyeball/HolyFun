@@ -3,7 +3,7 @@ module ErrorHandling where
 import Data.Monoid
 import Control.Monad.Trans
 import Control.Monad.Trans.Error
-import If
+import Control.Concatenative
 
 data Fubar = Fubar String
 
@@ -16,4 +16,4 @@ fobots = return 4
 
 dangerous :: ErrorT Fubar IO Int
 dangerous = lift fobots >>=
-    ify (< 5) return (const . throwError . Fubar $ "less than 5!")
+    ifte (< 5) return (const . throwError . Fubar $ "less than 5!")

@@ -54,7 +54,7 @@ l = (=<<) $ \x' -> if x' < 5 then return $ x' + 3 else mzero
 
 z = (>>= (\x' -> if x' < 5 then return $ x' + 3 else mzero))
 
-zz = ifyM (< 5) (return . (+ 3)) (const mzero)
+zz = ifteM (< 5) (return . (+ 3)) (const mzero)
 
 -- lift is really just, take this monad and make it match the transformed version
 -- so long as its the underlying monad. In this case an `IO Int` is being used inside

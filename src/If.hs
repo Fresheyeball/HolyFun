@@ -1,6 +1,7 @@
 module If where
 
 import Data.Composition
+import Control.Concatenative
 import Control.Applicative
 import Control.Monad
 
@@ -18,20 +19,22 @@ ify :: (a -> Bool) -- if
 --    if' (comparision x) (then' x) (else' x)
 ify = (<*>) .* liftM2 if'
 
+-- ify = ifte in Control.Concatenative
+
 -- Monadic version of ify.
 -- `if` is performed on the contents of the monad
 -- the codomain of then and else must be instances of the monad
-ifyM :: Monad m
+ifteM :: Monad m
     =>  (a -> Bool) -- if
     ->  (a -> m b)  -- then
     ->  (a -> m b)  -- else
     -> m a -> m b
-ifyM = (=<<) .** ify
+ifteM = (=<<) .** ifte
 
-ifyM' :: Monad m
+ifteM' :: Monad m
     => (a -> Bool)
     -> (a -> b)
     -> (a -> b)
     -> m a -> m b
 -- ifyM' = ((flip flip (return .) . ((.) .)) . (. (return .))) . ifyM
-ifyM' c t e = ifyM c (return . t) (return . e)
+ifteM' c t e = ifteM c (return . t) (return . e)
