@@ -5,7 +5,7 @@ import Control.Monad
 import Control.Monad.Error
 import Control.Monad.Trans.Maybe
 import Test.QuickCheck
-import If
+import IfFun
 
 g :: MaybeT [] Int
 g = MaybeT [Just 3, Nothing, Just 3]

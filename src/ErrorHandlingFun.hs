@@ -1,4 +1,4 @@
-module ErrorHandling where
+module ErrorHandlingFun where
 
 import Data.Monoid
 import Control.Monad.Trans

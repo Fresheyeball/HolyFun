@@ -1,4 +1,4 @@
-module If where
+module IfFun where
 
 import Data.Composition
 import Control.Concatenative
