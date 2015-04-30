@@ -1,6 +1,6 @@
 module Main where
 
-import MonadPlusFun
+import ArrowFun
 
 main :: IO ()
 main = glukkon
