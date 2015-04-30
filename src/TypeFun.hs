@@ -19,3 +19,6 @@ foozle _ = 3
 -- psycho, just psycho
 foozle :: Int -> Foo Int
 foozle _ = "what"
+
+boozle :: Int -> Foo String
+boozle = id
