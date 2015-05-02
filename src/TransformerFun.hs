@@ -17,12 +17,9 @@ h x y = (+ x) <$> (Just y)
 fobots :: IO Int
 fobots = return 3 :: IO Int
 
--- hmmm, how to use lift?
--- why is liftM generalized but lift is not?
---i :: Integer -> Integer -> MaybeT IO Integer
---i x y = return $ (x +) <$> fobots
-
 -- ok this I like
+-- here are some functions that are all logically equivelant
+-- but using differing operators and syntx
 u, i, j, k, l, n, z, zz :: MaybeT IO Int -> MaybeT IO Int
 
 u x = x >>= (\i' -> if i' < 5
