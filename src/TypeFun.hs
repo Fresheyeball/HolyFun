@@ -8,6 +8,12 @@ type family Foo a
 type instance Foo Int = String
 type instance Foo String = Int
 
+type family Bar
+
+-- it just needs to be of kind *?
+type instance Bar = Int
+-- below is not ok because if overlaps
+-- type instance Bar = String
 
 -- not ok?
 {-
