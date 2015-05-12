@@ -38,3 +38,9 @@ ifteM' :: Monad m
     -> m a -> m b
 -- ifyM' = ((flip flip (return .) . ((.) .)) . (. (return .))) . ifyM
 ifteM' c t e = ifteM c (return . t) (return . e)
+
+data IF a = IF a a
+
+runIF :: IF a -> Bool -> a
+runIF (IF t _) True = t
+runIF (IF _ e) _    = e
